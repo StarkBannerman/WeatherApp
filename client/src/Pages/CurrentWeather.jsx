@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import axios from "axios";
-import { APP_URL } from "../constants";
+import { APP_URL } from "../constants.js";
 
 export default function CurrentWeather() {
   const [weatherData, setWeatherData] = useState({ data: "Arun" });
@@ -30,9 +30,16 @@ export default function CurrentWeather() {
         const location = await getCurrentLocation();
         console.log("Location:", location);
 
-        const response = await axios.post(`${APP_URL}/currentWeather`, {
-          location: location,
-        });
+        const response = await axios.post(
+          `${APP_URL}/currentWeather?location=${location}`,
+          {
+            location: location,
+          }
+        );
+
+        //   const response = await axios.get(
+        //     `${APP_URL}/currentWeather?location=${location}`
+        //   );
 
         console.log(response);
         setWeatherData(response.data);
