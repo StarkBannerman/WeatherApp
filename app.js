@@ -15,13 +15,13 @@ app.get("/", (req, res) => {
   res.redirect("https://aruncodes.site");
 });
 
-app.use(express.static(join(__dirname, "public")));
-const client = path.resolve(__dirname, "../client/build");
-app.use(express.static(client));
+// app.use(express.static(join(__dirname, "public")));
+// const client = path.resolve(__dirname, "../client/build");
+// app.use(express.static(client));
 
-app.get("/client/*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
-});
+// app.get("/client/*", (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
+// });
 
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: false }));
 app.use(bodyParser.text());
