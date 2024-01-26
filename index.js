@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
   res.redirect("https://aruncodes.site");
 });
 
-app.use(express.static(join(__dirname, "public")));
+//app.use(express.static(join(__dirname, "public")));
 const client = path.resolve(__dirname, "./client/build");
 app.use(express.static(client));
 
