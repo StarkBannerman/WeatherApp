@@ -4,9 +4,9 @@ import CurrentWeather from "./Pages/CurrentWeather";
 function App() {
   return (
     <>
-      <BrowserRouter basename="/weather">
+      <BrowserRouter basename="/client">
         <Routes>
-          <Route path="/">
+          <Route path="/weather">
             <Route index={true} element={<CurrentWeather />} />
           </Route>
         </Routes>
