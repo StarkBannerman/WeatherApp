@@ -5,6 +5,7 @@ import { APP_URL } from "../constants.js";
 import Navbar from "../Components/Header.jsx";
 import TodaysForecast from "../Components/TodaysForecast.jsx";
 import { MutatingDots } from "react-loader-spinner";
+import CurrentData from "../Components/CurrentDetails.jsx";
 
 export default function CurrentWeather() {
   const [weatherData, setWeatherData] = useState(null);
@@ -87,6 +88,7 @@ export default function CurrentWeather() {
       ) : (
         <Box sx={{ backgroundColor: "#eeedfa", minHeight: "100vh" }}>
           <Navbar weatherData={weatherData} />
+          <CurrentData weatherData={weatherData} />
           <TodaysForecast weatherData={weatherData} />
         </Box>
       )}

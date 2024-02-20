@@ -81,7 +81,7 @@ export default function TodaysForecast(props) {
       icon: <SolarPowerIcon />,
     },
   ];
-  console.log(values);
+
   const data = [
     {
       feild: "Windgust",
@@ -122,21 +122,11 @@ export default function TodaysForecast(props) {
           height: "90%",
           borderRadius: "20px",
           backgroundColor: "#FFF",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-          <Typography
-            sx={{
-              fontSize: "18px",
-              fontWeight: "700",
-              textAlign: "center",
-              mt: 2,
-            }}
-          >
-            {`Forecast: "${forecast}"`}
-          </Typography>
-        </Grid>
-
         <Grid
           item
           xs={12}
@@ -154,8 +144,8 @@ export default function TodaysForecast(props) {
               <Grid
                 item
                 key={val}
-                xs={4}
-                sm={4}
+                xs={12}
+                sm={12}
                 md={4}
                 lg={4}
                 xl={4}
