@@ -56,6 +56,24 @@ export default function ChatWindow(props) {
     }
   };
 
+  const handleClickSend = () => {
+    try {
+      setWaitForResponse(true);
+      setChats((prev) => [
+        ...prev,
+        {
+          sender: "visitor",
+          message: message,
+        },
+      ]);
+
+      getResponseFromAI();
+      setCurrentMessage("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -128,12 +146,12 @@ export default function ChatWindow(props) {
           <Typography
             sx={{
               fontWeight: 900,
-              fontSize: "40px",
+              fontSize: "20px",
               color: "#FFF",
               ml: 3,
             }}
           >
-            Personal AI Assitant
+            Mistral 7B-instruct
           </Typography>
         </Box>
       </Grid>
@@ -319,19 +337,21 @@ export default function ChatWindow(props) {
                 type="text"
                 endAdornment={
                   <InputAdornment position="end">
-                    <IconButton type="submit" edge="end">
-                      {loading ? (
-                        <SendRoundedIcon
-                          sx={{
-                            width: "25px",
-                            height: "25px",
-                            color: "#FFF",
-                          }}
-                        />
-                      ) : (
-                        <CircularProgress variant="indeterminate" size={25} />
-                      )}
-                    </IconButton>
+                    <div onClick={handleClickSend}>
+                      <IconButton type="submit" edge="end">
+                        {loading ? (
+                          <SendRoundedIcon
+                            sx={{
+                              width: "25px",
+                              height: "25px",
+                              color: "#FFF",
+                            }}
+                          />
+                        ) : (
+                          <CircularProgress variant="indeterminate" size={25} />
+                        )}
+                      </IconButton>
+                    </div>
                   </InputAdornment>
                 }
               />
