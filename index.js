@@ -3,9 +3,11 @@ import { fileURLToPath } from "url";
 import * as path from "path";
 import { join, dirname } from "path";
 import currentWeather from "./Routes/currentWeather.js";
+import chatBot from "./Routes/chatBot.js";
 import bodyParser from "body-parser";
 import axios from "axios";
 import cors from "cors";
+import { getResponsefromAI } from "./Services/chatBotServices.js";
 const app = express();
 const port = 3000;
 const __filename = fileURLToPath(import.meta.url);
@@ -34,6 +36,8 @@ app.use(
 );
 
 app.use("/currentWeather", currentWeather);
+app.use('/bot', chatBot)
+//getResponsefromAI();
 
 const server = app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
